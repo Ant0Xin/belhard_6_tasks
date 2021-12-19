@@ -14,9 +14,45 @@
 - Функция calc_students, которая принимает SCHOOL_DATA и возвращает кол-во
     учеников во всей школе
 """
+
+
 school_data = {
     '1a': 15,
     '1b': 23,
     '2a': 13,
     '2b': 30
 }
+
+
+def incr_students(school_data: dict, name_of_class: str) -> dict:
+    school_data[name_of_class] = school_data[name_of_class] + 1
+    return school_data
+
+
+def decr_students(school_data: dict, name_of_class: str) -> dict:
+    if school_data[name_of_class] != 0:
+        school_data[name_of_class] = school_data[name_of_class] - 1
+        return school_data
+    else:
+        raise ValueError("There are no students!")
+
+
+def add_class(school_data: dict, name_of_class: str) -> dict:
+    school_data[name_of_class] = 0
+    return school_data
+
+
+def remove_class(school_data: dict, name_of_class: str) -> dict:
+    school_data.pop(name_of_class)
+    return school_data
+
+
+def calc_students(school_data: dict) -> int:
+    return sum(school_data.values())
+
+
+print(incr_students(school_data, name_of_class='1a'))
+print(decr_students(school_data, name_of_class='2a'))
+print(remove_class(school_data, name_of_class='1b'))
+print(add_class(school_data, name_of_class='2b'))
+print(calc_students(school_data))
