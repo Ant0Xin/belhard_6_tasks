@@ -38,3 +38,35 @@
     - курица
     - булка
 """
+
+
+def decorator_1(func):
+    def in_food(*args, **kwargs):
+        print("</------------\\>")
+        print("----- лук ------")
+        print("*** помидоры ****")
+        result = func(*args, **kwargs)
+        print("<\\____________/>")
+        return result
+    return in_food
+
+
+def decorator_2(func):
+    def in_food(*args, **kwargs):
+        print("</------------\\>")
+        print("^^^^^ сыр ^^^^^^")
+        print("~~~~ салат ~~~~~")
+        result = func(*args, **kwargs)
+        print("<\\____________/>")
+        return result
+    return in_food
+
+
+@decorator_1
+def beef():
+    print("### говядина ###")
+
+
+@decorator_2
+def chicken():
+    print("|||| курица ||||")
